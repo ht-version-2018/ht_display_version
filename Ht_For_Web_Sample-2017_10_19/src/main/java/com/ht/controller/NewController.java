@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.ht.model.New;
+import com.ht.model.News;
 import com.ht.service.NewService_Admin;
 
 @Controller
@@ -20,8 +20,8 @@ public class NewController {
 	
 	@RequestMapping("/new")
 	@ResponseBody
-	public List<New> getNewList(@RequestParam int page) throws SQLException{
-		List<New> newList = newInstance.getNewList(page);
+	public List<News> getNewList(@RequestParam int page) throws SQLException{
+		List<News> newList = newInstance.getNewList(page);
 		return newList;
 	}
 	

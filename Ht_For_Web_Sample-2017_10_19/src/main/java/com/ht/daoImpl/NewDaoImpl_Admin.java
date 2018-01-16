@@ -9,7 +9,7 @@ import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
 import com.ht.dao.NewDao_Admin;
-import com.ht.model.New;
+import com.ht.model.News;
 
 @Repository
 public class NewDaoImpl_Admin implements NewDao_Admin{
@@ -22,22 +22,22 @@ public class NewDaoImpl_Admin implements NewDao_Admin{
 	}
 	
 	@Override
-	public List<New> getNewList(int page){
+	public List<News> getNewList(int page){
 		String sql = "select * from new where newStatus=1 order by newId limit "+(page-1)*10+",10";
-		 List<New> newList = null;
+		 List<News> newList = null;
 		try{
-			newList = jdbcTemplate.query(sql,new Object[]{}, new RowMapper<New>(){
+			newList = jdbcTemplate.query(sql,new Object[]{}, new RowMapper<News>(){
 				@Override
-				public New mapRow(java.sql.ResultSet rs, int index) throws SQLException {
-					New newModel = new New();
+				public News mapRow(java.sql.ResultSet rs, int index) throws SQLException {
+					News newModel = new News();
 					newModel.setNewId(rs.getInt("newId"));
-					newModel.setNewName(rs.getString("newName"));
+				/*	newModel.setNewName(rs.getString("newName"));
 					newModel.setNewStatus(rs.getInt("newStatus"));
 					newModel.setNewTime(rs.getString("newTime"));
 					newModel.setNewContent(rs.getString("newContent"));
 					newModel.setNewGuiding(rs.getString("newGuiding"));
 					newModel.setUserNickName(rs.getString("userNickName"));
-					newModel.setViewTimes(rs.getInt("viewTimes"));
+					newModel.setViewTimes(rs.getInt("viewTimes"));*/
 					return newModel;
 				}
 			});
@@ -50,7 +50,7 @@ public class NewDaoImpl_Admin implements NewDao_Admin{
 
 	@Override
 	public int getNewNum() {
-		String sql = "select count(*) from new where newStatus=1";
+		String sql = "select count(*) from news where newStatus=1";
 		return jdbcTemplate.queryForObject(sql, Integer.class);
 	}
 
@@ -61,7 +61,7 @@ public class NewDaoImpl_Admin implements NewDao_Admin{
 	}
 
 	@Override
-	public int addNew(New newEntity) throws SQLException {
+	public int addNew(News newEntity) throws SQLException {
 		//String sql = "insert new values()"
 		return 0;
 	} 

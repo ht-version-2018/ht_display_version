@@ -10,7 +10,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 
-import com.ht.model.New;
+import com.ht.model.News;
 import com.ht.service.NewService_Admin;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -24,7 +24,7 @@ public class NewTest {
 	
 	@Test
 	public void getNewList() throws SQLException{
-		List<New> newList = newInstance.getNewList(1);
+		List<News> newList = newInstance.getNewList(1);
 		System.out.println("newList-->" + newList);
 	}
 	

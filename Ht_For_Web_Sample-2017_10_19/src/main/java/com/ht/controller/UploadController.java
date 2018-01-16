@@ -36,10 +36,10 @@ public class UploadController {
 					try {//Integer planMinArea,Integer planMaxArea,
 							Plan plan = new Plan();
 							plan.setPlanName(planName);
-							plan.setPlanFloor(planFloor);
+						/*	plan.setPlanFloor(planFloor);
 							plan.setPlanPicPath(file.getOriginalFilename());
 							plan.setPlanMinArea(0);
-							plan.setPlanMaxArea(0);
+							plan.setPlanMaxArea(0);*/
 							
 							isOk = planInstance.addPlan(plan);
 							if(isOk == 1){

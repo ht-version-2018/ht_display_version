@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.ht.dao.PlanDao_Admin;
-import com.ht.model.DesignPic;
 import com.ht.model.Plan;
 import com.ht.service.PlanService_Admin;
 
@@ -18,16 +17,8 @@ public class PlanServicelmpl_Admin implements PlanService_Admin{
 	private PlanDao_Admin planDao;
 
 	@Override
-	public List<Plan> getPlanList() {
-		return planDao.getPlanList();
-	}
-	@Override
-	public List<Plan> getPlanByFloorAndArea(double area, int floor){
-		return  planDao.getPlanByFloorAndArea(area, floor);
-	}
-	@Override
-	public List<DesignPic> getDesignByPlanIdAndTag(int id,int tag,int direct) throws SQLException{
-		return planDao.getDesignByPlanIdAndTag(id, tag, direct);
+	public List<Plan> getPlanList(Integer page, String searchInfo) throws SQLException{
+		return planDao.getPlanList(page, searchInfo);
 	}
 	@Override
 	public int addPlan(Plan plan) {

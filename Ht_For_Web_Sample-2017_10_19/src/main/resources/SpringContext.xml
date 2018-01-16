@@ -62,7 +62,7 @@ http://www.springframework.org/schema/tx/spring-tx.xsd">
     <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">  
         <property name="driverClassName" value="com.mysql.jdbc.Driver"></property>  
         <property name="password" value="123456"></property>  
-        <property name="url" value="jdbc:mysql://10.26.230.144:3306/ht_for_web_sample">
+        <property name="url" value="jdbc:mysql://10.26.230.144:3306/ht_for_web_2018">
         </property>  
         <property name="username" value="root"></property>  
      </bean>  

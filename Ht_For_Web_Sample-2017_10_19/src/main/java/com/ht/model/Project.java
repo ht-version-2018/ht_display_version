@@ -1,18 +1,45 @@
 package com.ht.model;
 
 public class Project {
-
-	private int projectId;
+	private Integer projectId;
 	private String projectName;
+	private String projectBegin;
+	private String projectEnd;
 	private String projectPlace;
 	private String projectIntro;
-	private String mainPic;
-	private int projectStatus;
+	private String projectPic;
+	private Integer projectStatus;
 	
-	public int getProjectId() {
+	/*
+	 * 无参数构造函数
+	 */
+	
+	public Project(){}
+	
+	/*
+	 * 有参数构造函数
+	 */
+	
+	public Project(Integer projectId,String projectName,String projectBegin,String projectEnd
+			,String projectPlace,String projectIntro,String projectPic,Integer projectStatus){
+		super();
+		this.projectId=projectId;
+		this.projectName=projectName;
+		this.projectBegin=projectBegin;
+		this.projectEnd=projectEnd;
+		this.projectPlace=projectPlace;
+		this.projectIntro=projectIntro;
+		this.projectPic=projectPic;
+		this.projectStatus=projectStatus;
+	}
+	
+	/*
+	 * get和set方法
+	 */
+	public Integer getProjectId() {
 		return projectId;
 	}
-	public void setProjectId(int projectId) {
+	public void setProjectId(Integer projectId) {
 		this.projectId = projectId;
 	}
 	public String getProjectName() {
@@ -20,6 +47,18 @@ public class Project {
 	}
 	public void setProjectName(String projectName) {
 		this.projectName = projectName;
+	}
+	public String getProjectBegin() {
+		return projectBegin;
+	}
+	public void setProjectBegin(String projectBegin) {
+		this.projectBegin = projectBegin;
+	}
+	public String getProjectEnd() {
+		return projectEnd;
+	}
+	public void setProjectEnd(String projectEnd) {
+		this.projectEnd = projectEnd;
 	}
 	public String getProjectPlace() {
 		return projectPlace;
@@ -33,22 +72,23 @@ public class Project {
 	public void setProjectIntro(String projectIntro) {
 		this.projectIntro = projectIntro;
 	}
-	public String getMainPic() {
-		return mainPic;
+	public String getProjectPic() {
+		return projectPic;
 	}
-	public void setMainPic(String mainPic) {
-		this.mainPic = mainPic;
+	public void setProjectPic(String projectPic) {
+		this.projectPic = projectPic;
 	}
-	public int getProjectStatus() {
+	public Integer getProjectStatus() {
 		return projectStatus;
 	}
-	public void setProjectStatus(int projectStatus) {
+	public void setProjectStatus(Integer projectStatus) {
 		this.projectStatus = projectStatus;
 	}
-	@Override
-	public String toString() {
-		return "Project [projectId=" + projectId + ", projectName=" + projectName + ", projectPlace=" + projectPlace
-				+ ", projectIntro=" + projectIntro + ", mainPic=" + mainPic + ", projectStatus=" + projectStatus + "]";
-	}
 	
+	@Override
+	public String toString(){
+		return "Project[projectId=" + projectId +",projectName=" + projectName +",projectBegin=" + projectBegin +",projectEnd="
+				+ projectEnd +",projectPlace=" + projectPlace +",projectIntro=" + projectIntro +",projectPic=" + projectPic +",projectStatus="
+				+ projectStatus +"]";
+	}
 }

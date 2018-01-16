@@ -29,6 +29,11 @@
 <![endif]-->
 <title>方案列表</title>
 </head>
+<script>
+$(document).ready(function(){
+	alert("hrllo");
+})
+</script>
 <body>
 <nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span> 方案管理 <span class="c-gray en">&gt;</span> 方案列表 <a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" ><i class="Hui-iconfont">&#xe68f;</i></a></nav>
 <div class="page-container">
@@ -51,15 +56,12 @@
 			<thead>
 				<tr class="text-c">
 					<th width="25"><input type="checkbox" name="" value=""></th>
-					<th width="80">ID</th>
-					<th>方案名称</th>
+					<th width="80">方案名称</th>
+					<th width="80">方案作者</th>
 					<th width="80">层数</th>
 					<th width="80">最小面积</th>
 					<th width="120">最大面积</th>
-					<th width="75">封面图片</th>
-					
-					<th width="60">发布状态</th>
-					 
+					<th width="60">审核状态</th>
 					<th width="120">操作</th>
 				</tr>
 			</thead>
@@ -191,16 +193,19 @@ function picture_del(obj,id){
 		layer.msg('已删除!',{icon:1,time:1000});
 	});
 }
+var page,searchInfo;
 $(document).ready(function(){
-	getPlanList();
+	alert("he");
+	getPlanList(1,null);
 })
-function getPlanList(){
-	
+function getPlanList(page,searchInfo){
 	$.ajax({
 		type:"post",
-		url:"plan",
+		url:"AdminPlan/planList",
 		contentType:"application/json",
+		data:{"page":page,"searchInfo":searchInfo},
 		success:function(data){
+			alert(JSON.stringify(data));
 		    $("#tbody").empty();
 		    for(var i=0;i<data.length;i++){
 		   		$("#tbody").append('<tr class="text-c">'
@@ -219,6 +224,7 @@ function getPlanList(){
 		}
 	});
 }
+
 </script> 
 </body>
 </html>

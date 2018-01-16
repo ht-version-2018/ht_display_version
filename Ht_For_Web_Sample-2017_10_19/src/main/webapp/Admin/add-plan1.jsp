@@ -1,5 +1,9 @@
 <!-- 创建方案页面 -->
 <%@ page language="java" contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
+<%
+	String basePath = request.getSession().getServletContext().getRealPath("/");
+	out.println(basePath);
+%>
 <!--_meta 作为公共模版分离出去-->
 <!DOCTYPE HTML>
 <html>
@@ -102,9 +106,9 @@ function FormDataUpload(){
         return;
     }
 	
-	fd.append("planName",$("#planName").val());
-	fd.append("planFloor",$("#planFloor").val());
-	fd.append("planIntro",$("#planIntro").val());
+	//fd.append("planName",$("#planName").val());
+	//fd.append("planFloor",$("#planFloor").val());
+	//fd.append("planIntro",$("#planIntro").val());
 	fd.append("file",fileObj);
 	$.ajax({
 		url:"../upload/uploadFormData",

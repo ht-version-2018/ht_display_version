@@ -1,16 +1,35 @@
 package com.ht.model;
 
 public class ProjectPic {
-	
-	private int projectPicId;
-	private int projectId;
+	private Integer projectId;
 	private String picName;
-	private int picStatus;
+	private String picPath;
+	private Integer picStatus;
 	
-	public int getProjectId() {
+	/*
+	 * 无参数的构造方法
+	 */
+	public ProjectPic(){}
+	
+	/*
+	 * 有参数的构造方法
+	 */
+	
+	public ProjectPic(Integer projectId,String picName,String picPath,Integer picStatus){
+		super();
+		this.projectId=projectId;
+		this.picName=picName;
+		this.picPath=picPath;
+		this.picStatus=picStatus;
+	}
+	
+	/*
+	 * get和set方法
+	 */
+	public Integer getProjectId() {
 		return projectId;
 	}
-	public void setProjectId(int projectId) {
+	public void setProjectId(Integer projectId) {
 		this.projectId = projectId;
 	}
 	public String getPicName() {
@@ -19,23 +38,22 @@ public class ProjectPic {
 	public void setPicName(String picName) {
 		this.picName = picName;
 	}
-	
-	public int getProjectPicId() {
-		return projectPicId;
+	public String getPicPath() {
+		return picPath;
 	}
-	public void setProjectPicId(int projectPicId) {
-		this.projectPicId = projectPicId;
+	public void setPicPath(String picPath) {
+		this.picPath = picPath;
 	}
-	public int getPicStatus() {
+	public Integer getPicStatus() {
 		return picStatus;
 	}
-	public void setPicStatus(int picStatus) {
+	public void setPicStatus(Integer picStatus) {
 		this.picStatus = picStatus;
 	}
-	@Override
-	public String toString() {
-		return "ProjectPic [projectPicId=" + projectPicId + ", projectId=" + projectId + ", picName=" + picName
-				+ ", picStatus=" + picStatus + "]";
-	}
 	
+	@Override
+	public String toString(){
+		return "ProjectPic[projectId="+ projectId +",picName="+ picName +",picPath="+ picPath +",picStatus="+ picStatus + "]";
+	}
+
 }
