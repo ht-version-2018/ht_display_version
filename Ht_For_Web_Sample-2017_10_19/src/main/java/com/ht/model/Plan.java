@@ -11,11 +11,12 @@ public class Plan {
 	private Integer planStyle;
 	private Integer elevaStyle;
 	private String planPic;
-	private Integer planStatus;
+	private Integer planState;
 	private String planName;
 	private Integer download;
 	private String planPath;
 	private Integer auditState;
+	private String createTime;
 	/*
 	 * 无参数构造函数
 	 * 
@@ -28,7 +29,7 @@ public class Plan {
 	
 	public Plan(String author,Double area, Double areaLength, Double areaWidth,Integer floor, Integer roofStyle,
 			Integer planStyle,Integer elevaStyle,String planPic,
-			Integer planStatus,String planName,Integer download, Integer auditState){
+			Integer planState,String planName,Integer download, Integer auditState,String createTime){
 		super();
 		this.author=author;
 		this.area=area;
@@ -39,10 +40,11 @@ public class Plan {
 		this.planStyle=planStyle;
 		this.elevaStyle=elevaStyle;
 		this.planPic=planPic;
-		this.planStatus=planStatus;
+		this.planState=planState;
 		this.planName=planName;
 		this.download=download;
 		this.auditState = auditState;
+		this.createTime = createTime;
 	}
 
 	
@@ -129,12 +131,12 @@ public class Plan {
 		this.planPic = planPic;
 	}
 
-	public Integer getPlanStatus() {
-		return planStatus;
+	public Integer getPlanState() {
+		return planState;
 	}
 
-	public void setPlanStatus(Integer planStatus) {
-		this.planStatus = planStatus;
+	public void setPlanState(Integer planState) {
+		this.planState = planState;
 	}
 
 	public String getPlanName() {
@@ -169,13 +171,22 @@ public class Plan {
 		this.auditState = auditState;
 	}
 
+	
+	public String getCreateTime() {
+		return createTime;
+	}
+
+	public void setCreateTime(String createTime) {
+		this.createTime = createTime;
+	}
+
 	@Override
 	public String toString() {
 		return "Plan [planId=" + planId + ", author=" + author + ", area=" + area + ", areaLength=" + areaLength
 				+ ", areaWidth=" + areaWidth + ", floor=" + floor + ", roofStyle=" + roofStyle + ", planStyle="
-				+ planStyle + ", elevaStyle=" + elevaStyle + ", planPic=" + planPic + ", planStatus=" + planStatus
+				+ planStyle + ", elevaStyle=" + elevaStyle + ", planPic=" + planPic + ", planState=" + planState
 				+ ", planName=" + planName + ", download=" + download + ", planPath=" + planPath + ", auditState="
-				+ auditState + "]";
+				+ auditState + ", createTime=" + createTime + "]";
 	}
-	
+
 }

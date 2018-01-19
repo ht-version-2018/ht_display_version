@@ -28,14 +28,14 @@
 <script type="text/javascript" src="http://lib.h-ui.net/DD_belatedPNG_0.0.8a-min.js" ></script>
 <script>DD_belatedPNG.fix('*');</script>
 <![endif]-->
-<title>新闻列表</title>
+<title>政策文件</title>
 </head>
 <body>
-<nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span> 资讯管理 <span class="c-gray en">&gt;</span> 新闻列表 <a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" ><i class="Hui-iconfont">&#xe68f;</i></a></nav>
+<nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span> 资讯管理 <span class="c-gray en">&gt;</span> 政策文件 <a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" ><i class="Hui-iconfont">&#xe68f;</i></a></nav>
 <div class="page-container">
 	<input type="text" name="" id="searchInfo" placeholder="新闻名称" style="margin-left:35%;width:250px" class="input-text">
 		<button class="btn btn-success" onclick="getNewList(1);showPage();"><i class="Hui-iconfont">&#xe665;</i> 搜索</button>
-	<div class="cl pd-5 bg-1 bk-gray mt-20"> <span class="l"><a href="javascript:batchDelete();" class="btn btn-danger radius"><i class="Hui-iconfont">&#xe6e2;</i> 批量删除</a> <a class="btn btn-primary radius" data-title="创建新闻" href="Admin/add-new.jsp" href="javascript:;"><i class="Hui-iconfont">&#xe600;</i> 创建新闻</a></span> <span class="r">共有数据：<strong id="num"></strong> 条</span> </div>
+	<div class="cl pd-5 bg-1 bk-gray mt-20"> <span class="l"><a href="javascript:batchDelete();" class="btn btn-danger radius"><i class="Hui-iconfont">&#xe6e2;</i> 批量删除</a> <a class="btn btn-primary radius" data-title="创建新闻" href="Admin/add-new.jsp" onclick="www.baidu.com" href="javascript:;"><i class="Hui-iconfont">&#xe600;</i> 创建新闻</a></span> <span class="r">共有数据：<strong id="num"></strong> 条</span> </div>
 	<div class="mt-20">
 		<table class="table table-border table-bordered table-bg table-hover table-sort">
 			<thead>
@@ -73,10 +73,23 @@ $(document).ready(function(){
 	showPage();
 })
 
+/*资讯-添加*/
+function article_add(title,url,w,h){
+	var index = layer.open({
+		type: 2,
+		title: title,
+		content: url
+	});
+	layer.full(index);
+}
 /*资讯-编辑*/
-function article_edit(title,url,id){
-	alert("content-->" + url+"?"+id);
-	window.location.href= url+"?" + id;
+function article_edit(title,url,id,w,h){
+	var index = layer.open({
+		type: 2,
+		title: title,
+		content: url
+	});
+	layer.full(index);
 }
 /*新闻-删除*/
 function new_del(obj,id){
@@ -90,36 +103,50 @@ function new_del(obj,id){
 		}
 	});
 }
+/*新闻-审核*/
+function new_shenhe(obj,id){
+	layer.confirm('审核新闻？', {
+		btn: ['通过','不通过','取消'], 
+		shade: false,
+		closeBtn: 0
+	},
+	function(){
+		$(obj).parents("tr").find(".td-manage").prepend('<a class="c-primary" onClick="article_start(this,id)" href="javascript:;" title="申请上线">申请上线</a>');
+		$(obj).parents("tr").find(".td-status").html('<span class="label label-success radius">已发布</span>');
+		$(obj).remove();
+		layer.msg('已发布', {icon:6,time:1000});
+	},
+	function(){
+		$(obj).parents("tr").find(".td-manage").prepend('<a class="c-primary" onClick="article_shenqing(this,id)" href="javascript:;" title="申请上线">申请上线</a>');
+		$(obj).parents("tr").find(".td-status").html('<span class="label label-danger radius">未通过</span>');
+		$(obj).remove();
+    	layer.msg('未通过', {icon:5,time:1000});
+	});	
+}
 /*资讯-下架*/
 function new_stop(obj,id){
 	layer.confirm('确认要取消发布吗？',function(index){
-		isOk = updateNewStatus(id,1);
-		alert("isOk-->" + isOk);
-		if(isOk){
-			$(obj).parents("tr").find(".td-manage").prepend('<a style="text-decoration:none" onClick="new_start(this,'+id+',)" href="javascript:;" title="发布"><i class="Hui-iconfont">&#xe603;</i></a>');
-			$(obj).parents("tr").find(".td-status").html('<span class="label label-defaunt radius">未发布</span>');
-			$(obj).remove();
-			layer.msg('已取消发布!',{icon: 1,time:1000});
-		}else{
-			layer.msg('程序出错啦,请刷新页面重试!',{icon: 2,time:1000});
-		}
+		$(obj).parents("tr").find(".td-manage").prepend('<a style="text-decoration:none" onClick="article_start(this,id)" href="javascript:;" title="发布"><i class="Hui-iconfont">&#xe603;</i></a>');
+		$(obj).parents("tr").find(".td-status").html('<span class="label label-defaunt radius">取消发布</span>');
+		$(obj).remove();
+		layer.msg('已取消发布!',{icon: 5,time:1000});
 	});
 }
 
-/*新闻-发布*/
-function new_start(obj,id){
+/*资讯-发布*/
+function article_start(obj,id){
 	layer.confirm('确认要发布吗？',function(index){
-		isOk = updateNewStatus(id,2);
-		alert("isOk-->" + isOk);
-		if(isOk){
-			$(obj).parents("tr").find(".td-manage").prepend('<a style="text-decoration:none" onClick="new_stop(this,'+id+')" href="javascript:;" title="取消发布"><i class="Hui-iconfont">&#xe6de;</i></a>');
-			$(obj).parents("tr").find(".td-status").html('<span class="label label-success radius">已发布</span>');
-			$(obj).remove();
-			layer.msg('已发布!',{icon: 6,time:1000});
-		}else{
-			layer.msg('程序出错啦,请刷新页面重试!',{icon: 2,time:1000});
-		}
+		$(obj).parents("tr").find(".td-manage").prepend('<a style="text-decoration:none" onClick="article_stop(this,id)" href="javascript:;" title="下架"><i class="Hui-iconfont">&#xe6de;</i></a>');
+		$(obj).parents("tr").find(".td-status").html('<span class="label label-success radius">已发布</span>');
+		$(obj).remove();
+		layer.msg('已发布!',{icon: 6,time:1000});
 	});
+}
+/*资讯-申请上线*/
+function article_shenqing(obj,id){
+	$(obj).parents("tr").find(".td-status").html('<span class="label label-default radius">待审核</span>');
+	$(obj).parents("tr").find(".td-manage").html("");
+	layer.msg('已提交申请，耐心等待审核!', {icon: 1,time:2000});
 }
 
 var page = 1;
@@ -146,12 +173,12 @@ function getNewList(page){
 		    	
 		    	if(data[i].newStatus == 1){
 		    		state = "未发布";
-		    		spanColor = "label label-defaunt radius";
+		    		spanColor = "label label-warning radius";
 		    		operation = "<td class='f-14 td-manage'><a style='text-decoration:none' "
-    					+"onClick='new_start(this,"+data[i].newId+")' href='javascript:;' title='发布'>"
+    					+"onClick='article_stop(this,'10001')' href='javascript:;' title='发布'>"
     					+"<i class='Hui-iconfont'>&#xe6de;</i></a>"
     					+"<a style='text-decoration:none' class='ml-5'"
-    					+"onClick='article_edit(\'新闻编辑\', \'new-content.jsp\',"+data[i].newId+")' href='javascript:;'"
+    					+"onClick='article_edit('资讯编辑','article-add.html','10001')' href='javascript:;'"
     					+"title='编辑'><i class='Hui-iconfont'>&#xe6df;</i></a> <a style='text-decoration:none' class='ml-5'" 
     					+"onClick='new_del(this,"+data[i].newId+")' href='javascript:;' title='删除'><i class='Hui-iconfont'>&#xe6e2;</i></a></td>";
 		    	}else{
@@ -161,7 +188,7 @@ function getNewList(page){
 		    					+"onClick='new_stop(this,"+data[i].newId+")' href='javascript:;' title='取消发布'>"
 		    					+"<i class='Hui-iconfont'>&#xe6de;</i></a>"
 		    					+"<a style='text-decoration:none' class='ml-5'"
-		    					+"onClick='article_edit(\'新闻编辑\',\'new-content.jsp\',"+data[i].newId+")' href='javascript:;'"
+		    					+"onClick='article_edit('资讯编辑','article-add.html','10001')' href='javascript:;'"
 		    					+"title='编辑'><i class='Hui-iconfont'>&#xe6df;</i></a> <a style='text-decoration:none' class='ml-5'" 
 		    					+"onClick='new_del(this,"+data[i].newId+")' href='javascript:;' title='删除'><i class='Hui-iconfont'>&#xe6e2;</i></a></td>";
 		    	}
@@ -171,33 +198,17 @@ function getNewList(page){
 					+"<td class='text-l'><u style='cursor:pointer' class='text-primary' onClick='article_edit('查看','article-zhang.html','10001')' title='查看'>"+data[i].newTitle+"</u></td>"
 					+"<td>"+data[i].author+"</td>"
 					+"<td>"+data[i].createTime+"</td>"
-					+'<td class="td-status"><span class="'+spanColor+'">'+state+'</span></td>'
+					+'<td class="box-msg"><span class="'+spanColor+'">'+state+'</span></td>'
 					+operation
 				+"</tr>");
 		    }
 		}
 	});
 }
-var isOk = true;
-function updateNewStatus(newId,status){
-	$.ajax({
-		type: "post",
-		url:  "new/updateNewStatus",
-		async: false,
-		data: { newId:newId,newStatus:status},
-		dataType:"json",
-		success:function(data){
-		    isOk = true;
-		},
-		error:function(){
-			isOk = false;
-		}
-	});
-	return isOk;
-}
 var newId;
 //删除数据库中的新闻记录
 function newDel(newId){
+	var isOk = true;
 	$.ajax({
 		type: "post",
 		url:  "new/delNew",

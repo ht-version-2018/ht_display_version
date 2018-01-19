@@ -32,6 +32,15 @@ public class PlanTest {
 		}
 		System.out.println("PlanList-->" +planList);
 	}
+	
+	@Test
+	public void getPlanNum(){
+		try {
+			System.out.println("planNum-->" + planInstance.getPlanNum("13"));
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
 	/*@Test
 	public void getPlanList1(){
 		List<Plan> PlanList = PlanInstance.getPlanByFloorAndArea(60, 2);
@@ -40,13 +49,18 @@ public class PlanTest {
 */	
 	@Test
 	public void addPlan(){
-		Plan plan = new Plan();
+		
+		Plan plan = new Plan("张三", 100.00, 10.00, 10.00, 4, 1, 1, 1, "baidu.jpg", 1, "方案一", 1,1, "2018-01-01 21:24:48");
+		try {
+			System.out.println("addPlan-->" + planInstance.addPlan(plan));
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 		/*plan.setPlanFloor(2);
 		plan.setPlanMaxArea(30);
 		plan.setPlanMinArea(10);
 		plan.setPlanName("只是测试一下");
 		plan.setPlanPicPath("1.jpg");*/
-		plan.setPlanStatus(1);
 	//	int ok = PlanInstance.addPlan(plan);
 	//	System.out.println("ok-->"+ ok);
 	}

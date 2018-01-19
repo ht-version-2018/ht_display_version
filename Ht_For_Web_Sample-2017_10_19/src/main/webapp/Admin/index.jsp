@@ -77,6 +77,7 @@
 			<dd>
 				<ul>
 					<li><a _href="new-list.jsp" data-title="新闻管理" href="javascript:void(0)">新闻管理</a></li>
+					<li><a _href="policy-file-list.jsp" data-title="政策文件" href="javascript:void(0)">政策文件</a></li>
 				</ul>
 			</dd>
 		</dl>

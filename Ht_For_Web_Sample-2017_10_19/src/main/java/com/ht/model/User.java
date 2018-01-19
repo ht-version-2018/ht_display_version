@@ -15,7 +15,7 @@ public class User {
 	private String userPic;
 	private Integer userStatus;
 	private String userInfo;
-	
+	private String rstTime;
 	/*
 	 * 无参数构造函数
 	 */
@@ -24,11 +24,10 @@ public class User {
 	/*
 	 * 有参数构造函数
 	 */
-	public User(Integer userId,Integer userRole,String userAccout,String userPwd,
+	public User(Integer userRole,String userAccout,String userPwd,
 			String userEmail,Integer userAge,String userTitle,Integer userSex,String userUnit,
 			String userPhone,String userIdCard,String userPic,Integer userStatus,String userInfo){
 		super();
-		this.userId=userId;
 		this.userRole=userRole;
 		this.userAccout=userAccout;
 		this.userPwd=userPwd;
@@ -47,11 +46,11 @@ public class User {
 	/*
 	 * get和set方法
 	 */
-	public Integer getUserId() {
+	public Integer setUserId(Integer userId) {
 		return userId;
 	}
-	public void setUserId(Integer userId) {
-		this.userId = userId;
+	public Integer getUserId() {
+		return userId;
 	}
 	public Integer getUserRole() {
 		return userRole;
@@ -131,13 +130,19 @@ public class User {
 	public void setUserInfo(String userInfo) {
 		this.userInfo = userInfo;
 	}
-	
+	public String getRstTime() {
+		return rstTime;
+	}
+	public void setRstTime(String rstTime) {
+		this.rstTime = rstTime;
+	}
 	@Override
-	public String toString(){
-		return "User[userId="+ userId +",userRole="+ userRole +",userAccout="+ userAccout +",userPwd="
-				+ userPwd +",userEmail="+ userEmail +",userAge="+ userAge +",userTitle="+ userTitle +",userSex="
-				+ userSex +",userUnit="+ userUnit +",userPhone="+ userPhone +",userIdCard="
-				+ userIdCard +",userPic="+ userPic +",userStatus="+ userStatus +",userInfo="+ userInfo +"]";
+	public String toString() {
+		return "User [userId=" + userId + ", userRole=" + userRole + ", userAccout=" + userAccout + ", userPwd="
+				+ userPwd + ", userEmail=" + userEmail + ", userAge=" + userAge + ", userTitle=" + userTitle
+				+ ", userSex=" + userSex + ", userUnit=" + userUnit + ", userPhone=" + userPhone + ", userIdCard="
+				+ userIdCard + ", userPic=" + userPic + ", userStatus=" + userStatus + ", userInfo=" + userInfo
+				+ ", rstTime=" + rstTime + "]";
 	}
 
 }

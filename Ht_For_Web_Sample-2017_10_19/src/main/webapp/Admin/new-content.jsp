@@ -24,13 +24,13 @@
 		<div class="row cl">
 			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>新闻标题：</label>
 			<div class="formControls col-xs-8 col-sm-9">
-				<input type="text" class="input-text" value="" placeholder="" id="newTitle" maxlength="60">
+				<input type="text" class="input-text" value="${requestScope.news.newTitle}" placeholder="" id="newTitle" maxlength="60">
 			</div>
 		</div>
 		<div class="row cl">
 			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>新闻作者：</label>
 			<div class="formControls col-xs-8 col-sm-9">
-				<input type="text" class="input-text" value="" placeholder="" id="author" maxlength="30">
+				<input type="text" class="input-text" value="${requestScope.news.author}" placeholder="" id="author" maxlength="30">
 			</div>
 		</div>
 		<div class="row cl" id="content">
@@ -41,7 +41,7 @@
 		</div>
 		<div class="row cl">
 			<div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-2">
-				<button class="btn btn-primary radius" type="button" id="submit"><i class="Hui-iconfont">&#xe632;</i> 保存并创建</button>
+				<button class="btn btn-primary radius" type="button" id="submit"><i class="Hui-iconfont">&#xe632;</i> 保存</button>
 			</div>
 		</div>
 	</form>
@@ -52,6 +52,24 @@
  <script type="text/javascript" src="${root}/Admin/lib/jquery/1.9.1/jquery.js"></script>
  <script type="text/javascript" src="${root}/Admin/lib/layer/2.1/layer.js"></script>
  <script type="text/javascript">
+/* $(document).ready(function(){
+	alert("newId-->" + ${param.newId} );
+	getNews(${param.newId});
+});
+ */
+function getNews(newId){
+	
+	$.ajax({
+		type:'post',
+		url: '${root}/new/getNew',
+		data:{newId: '${param.newId}'},
+		contentType:'json',
+		success:function(data){
+			alert(JSON.stringify(data));
+		}
+	});
+}
+
 function isnull(val){
 	var str = val.replace(/(^\s*)|(\s*$)/g, '');//去除空格;
 

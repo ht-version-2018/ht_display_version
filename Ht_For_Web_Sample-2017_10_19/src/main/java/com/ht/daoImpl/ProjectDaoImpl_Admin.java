@@ -38,11 +38,17 @@ public class ProjectDaoImpl_Admin implements ProjectDao_Admin{
 	}
 
 	@Override
+	public List<ProjectPic> getPrjPic(int projectId, int tag) throws SQLException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	/*@Override
 	public List<ProjectPic> getPrjPic(int projectId,int tag) throws SQLException {
 		String sql = "select * from projectpic where projectId="+projectId + " and picTag=" + tag;
 		List<ProjectPic> prjPicList = jdbcTemplate.query(sql, new BeanPropertyRowMapper(ProjectPic.class));
 		return prjPicList;
-	}
+	}*/
 	
 	
 }

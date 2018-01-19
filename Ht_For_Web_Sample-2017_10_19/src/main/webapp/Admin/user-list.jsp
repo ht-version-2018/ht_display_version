@@ -28,12 +28,12 @@
 <script type="text/javascript" src="http://lib.h-ui.net/DD_belatedPNG_0.0.8a-min.js" ></script>
 <script>DD_belatedPNG.fix('*');</script>
 <![endif]-->
-<title>新闻列表</title>
+<title>用户列表</title>
 </head>
 <body>
-<nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span> 资讯管理 <span class="c-gray en">&gt;</span> 新闻列表 <a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" ><i class="Hui-iconfont">&#xe68f;</i></a></nav>
+<nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span> 资讯管理 <span class="c-gray en">&gt;</span> 用户列表 <a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" ><i class="Hui-iconfont">&#xe68f;</i></a></nav>
 <div class="page-container">
-	<input type="text" name="" id="searchInfo" placeholder="新闻名称" style="margin-left:35%;width:250px" class="input-text">
+	<input type="text" name="" id="searchInfo" placeholder="用户名称" style="margin-left:35%;width:250px" class="input-text">
 		<button class="btn btn-success" onclick="getNewList(1);showPage();"><i class="Hui-iconfont">&#xe665;</i> 搜索</button>
 	<div class="cl pd-5 bg-1 bk-gray mt-20"> <span class="l"><a href="javascript:batchDelete();" class="btn btn-danger radius"><i class="Hui-iconfont">&#xe6e2;</i> 批量删除</a> <a class="btn btn-primary radius" data-title="创建新闻" href="Admin/add-new.jsp" href="javascript:;"><i class="Hui-iconfont">&#xe600;</i> 创建新闻</a></span> <span class="r">共有数据：<strong id="num"></strong> 条</span> </div>
 	<div class="mt-20">
@@ -41,9 +41,11 @@
 			<thead>
 				<tr class="text-c">
 					<th width="25"><input type="checkbox" name="" value=""></th>
-					<th width="120">新闻标题</th>
-					<th width="80">作者</th>
-					<th width="120">发布时间</th>
+					<th width="80">用户账号</th>
+					<th width="80">用户密码</th>
+					<th width="80">用户邮箱</th>
+					<th width="80">发布时间</th>
+					<th width="80">时间</th>
 					<th width="60">发布状态</th>
 					<th width="120">操作</th>
 				</tr>
